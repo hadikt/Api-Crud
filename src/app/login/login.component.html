@@ -1,0 +1,35 @@
+<div class="p-11  flex w-full h-[100vh] flex-col ">
+  <div *ngIf="!showlogin" class="text-center flex justify-center items-center flex-col gap-6">
+    <h1 class="mb-24 text-2xl"> Sign-up Api</h1>
+    <form class="flex flex-col w-80 items-center gap-2" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+      <input class="border border-black p-2" type="text" formControlName="name" placeholder="Enter name">
+      <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched" class="text-red-500">Name is required</div>
+
+      <input class="border border-black p-2" type="password" formControlName="password" placeholder="Enter password">
+      <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-red-500">Password is required</div>
+
+      <input class="border border-black p-2" type="email" formControlName="email" placeholder="Enter email">
+      <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-red-500">
+        <div *ngIf="signupForm.get('email')?.errors">Email is required</div>
+        <div *ngIf="signupForm.get('email')?.errors">Invalid email format</div>
+      </div>
+
+      <button type="submit" class="bg-yellow-300 hover:bg-gray-200 p-2 w-[150px] m-auto rounded-md" [disabled]="signupForm.invalid">Sign Up</button>
+      <a class="via-violet-500 text-sm mt-[10px] text-left" (click)="openLogin()">Already had Account? Click for Login</a>
+    </form>
+  </div>
+
+  <div *ngIf="showlogin" class=" flex w-full h-[100vh] items-center flex-col">
+    <h1 class="mb-24 text-2xl text-center flex justify-center items-center flex-col gap-6"> Login Api</h1>
+    <form class="flex flex-col w-80 items-center gap-2"[formGroup]="loginForm"  (ngSubmit)="onLogin()">
+      <input class="border border-black p-2" type="email" formControlName="email" placeholder="Enter email">
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500">Email is required</div>
+
+      <input class="border border-black p-2" type="password" formControlName="password" placeholder="Enter password">
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500">Password is required</div>
+
+      <button type="submit" class="bg-yellow-300 hover:bg-gray-200 p-2 w-[150px] m-auto rounded-md" [disabled]="loginForm.invalid">Login</button>
+      <a class="via-violet-500 text-sm mt-[10px] text-left" (click)="opensignup()">Don't have an account? Click for Sign-up</a>
+    </form>
+  </div>
+</div>

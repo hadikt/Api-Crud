@@ -1,0 +1,14 @@
+<div class="p-11  flex w-full h-[100vh] flex-col ">
+  <div  class="text-center flex justify-center items-center flex-col gap-6">
+    <h1 class="mb-24 text-2xl"> Update Api</h1>
+    <p class="text-red-600 text-3xl">{{userUpdate}}</p>
+    <form class="flex flex-col w-80 items-center gap-2" [formGroup]="updateForm"  (submit)="onUpdate()">
+      <input class="border border-black p-2" type="text" formControlName="name" placeholder="Enter name">
+
+
+      <input class="border border-black p-2" type="password" formControlName="password" placeholder="Enter password">
+
+
+
+
+      <button type="submit" class="bg-yellow-300 hover:bg-gray-200 p-2 w-[150px] m-auto rounded-md" [disabled]="updateForm.invalid">Submit</button>
